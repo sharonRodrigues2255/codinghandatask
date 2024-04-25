@@ -5,6 +5,7 @@ import 'package:coding_hands_task/helpers/constants/textstyle.dart';
 import 'package:coding_hands_task/view/home_page.dart/widgets.dart';
 import 'package:coding_hands_task/view/product_details/product_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
@@ -54,7 +55,7 @@ class HomePage extends ConsumerWidget {
                   padding: const EdgeInsets.all(22.0),
                   child: Column(
                     children: [
-                      InkWell(
+                      GestureDetector(
                         onTap: () async {
                           ref
                               .read(ProductDetailsController
@@ -63,14 +64,17 @@ class HomePage extends ConsumerWidget {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const ProductDetails()));
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(products[0].thumbnail!))),
-                          width: 328,
-                          height: 180,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(products[0].thumbnail!))),
+                                            
+                            height: 180,
+                          ),
                         ),
                       ),
                       kheight10,
@@ -105,7 +109,7 @@ class HomePage extends ConsumerWidget {
                                   child: Stack(
                                     children: [
                                       Container(
-                                        width: 328,
+                                  
                                         height: 180,
                                         decoration: BoxDecoration(
                                           borderRadius:
@@ -140,8 +144,9 @@ class HomePage extends ConsumerWidget {
                                         left: 0,
                                         right: 0,
                                         child: Container(
-                                          width: 328,
+                                          
                                           padding: const EdgeInsets.all(12),
+                                         
                                           height: 80,
                                           decoration: BoxDecoration(
                                             border: Border.all(
